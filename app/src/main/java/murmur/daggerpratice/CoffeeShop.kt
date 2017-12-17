@@ -4,5 +4,5 @@ import dagger.Component
 
 @Component
 interface CoffeeShop{
-    fun order(): Coffee
+    fun order(activity: MainActivity)
 }
