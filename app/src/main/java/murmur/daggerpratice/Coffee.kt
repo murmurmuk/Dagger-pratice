@@ -1,10 +1,22 @@
 package murmur.daggerpratice
 
 import android.util.Log
-import javax.inject.Inject
+import dagger.Module
+import dagger.Provides
 
-class Coffee @Inject constructor(){
-    fun show(){
+@Module
+class CoffeeModule {
+    @Provides
+    fun provideCoffee(): Coffee {
+        return Coffee()
+    }
+}
+
+class Coffee {
+    init {
+        Log.d("kanna", "create coffee " + this)
+    }
+    fun show() {
         Log.d("kanna", "~coffee~")
     }
 }
