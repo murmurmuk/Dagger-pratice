@@ -3,15 +3,14 @@ package murmur.daggerpratice
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import javax.inject.Inject
-import javax.inject.Named
 
 class MainActivity : AppCompatActivity() {
     @Inject
-    @field:Named("hot")
+    @field:Hot
     lateinit var coffee1: Coffee
 
     @Inject
-    @field:Named("ice")
+    @field:Ice
     lateinit var coffee2: Coffee
 
     override fun onCreate(savedInstanceState: Bundle?) {
