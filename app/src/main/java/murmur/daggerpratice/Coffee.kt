@@ -1,23 +1,20 @@
 package murmur.daggerpratice
 
 import android.util.Log
+import dagger.Binds
 import dagger.Module
-import dagger.Provides
+import javax.inject.Inject
 import javax.inject.Qualifier
 
 @Module
-class CoffeeModule {
-    @Provides
+abstract class CoffeeModule {
+    @Binds
     @Ice
-    fun provideIceCoffee(): Coffee {
-        return IceCoffee()
-    }
+    abstract fun provideIceCoffee(coffee: IceCoffee): Coffee
 
-    @Provides
+    @Binds
     @Hot
-    fun provideHotCoffee(): Coffee {
-        return HotCoffee()
-    }
+    abstract fun provideHotCoffee(coffee: HotCoffee): Coffee
 }
 
 @Qualifier
@@ -36,13 +33,13 @@ open class Coffee {
     }
 }
 
-class IceCoffee : Coffee() {
+class IceCoffee @Inject constructor() : Coffee() {
     override fun show() {
         Log.d("kanna", "~ice coffee~")
     }
 }
 
-class HotCoffee : Coffee() {
+class HotCoffee @Inject constructor() : Coffee() {
     override fun show() {
         Log.d("kanna", "~hot coffee~")
     }
