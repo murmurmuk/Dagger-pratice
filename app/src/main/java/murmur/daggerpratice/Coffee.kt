@@ -3,20 +3,37 @@ package murmur.daggerpratice
 import android.util.Log
 import dagger.Module
 import dagger.Provides
+import javax.inject.Named
 
 @Module
 class CoffeeModule {
     @Provides
-    fun provideCoffee(): Coffee {
-        return Coffee()
+    @Named("ice")
+    fun provideIceCoffee(): Coffee {
+        return IceCoffee()
+    }
+
+    @Provides
+    @Named("hot")
+    fun provideHotCoffee(): Coffee {
+        return HotCoffee()
     }
 }
 
-class Coffee {
-    init {
-        Log.d("kanna", "create coffee " + this)
-    }
-    fun show() {
+open class Coffee {
+    open fun show() {
         Log.d("kanna", "~coffee~")
+    }
+}
+
+class IceCoffee : Coffee() {
+    override fun show() {
+        Log.d("kanna", "~ice coffee~")
+    }
+}
+
+class HotCoffee : Coffee() {
+    override fun show() {
+        Log.d("kanna", "~hot coffee~")
     }
 }
