@@ -4,7 +4,7 @@ import android.util.Log
 import dagger.Module
 import dagger.Provides
 
-@Module
+@Module(subcomponents = [CakeCabinet::class])
 class CoffeeModule{
     @Provides
     fun provideCoffee(@UserName userName: String): Coffee{
