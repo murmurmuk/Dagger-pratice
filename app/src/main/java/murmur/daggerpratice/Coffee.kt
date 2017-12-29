@@ -15,8 +15,27 @@ class CoffeeModule {
 
     @Provides
     @Named("hot")
-    fun provideHotCoffee(): Coffee {
-        return HotCoffee()
+    fun provideHotCoffee(@UserName userName: String): Coffee {
+        return HotCoffee(userName)
+    }
+
+    @Provides
+    @Named("ice-combo")
+    fun provideCombo(@Named("ice") coffee: Coffee): Combo {
+        return Combo(coffee)
+    }
+
+    @Provides
+    @Named("hot-combo")
+    fun provideHotCombo(@Named("hot") coffee: Coffee): Combo {
+        return Combo(coffee)
+    }
+}
+
+class Combo(private val coffee: Coffee) {
+    fun show() {
+        Log.d("kanna", "Cake with")
+        coffee.show()
     }
 }
 
@@ -32,8 +51,10 @@ class IceCoffee : Coffee() {
     }
 }
 
-class HotCoffee : Coffee() {
+class HotCoffee(@UserName private val userName: String) : Coffee() {
     override fun show() {
-        Log.d("kanna", "~hot coffee~")
+        Log.d("kanna", "~hot coffee~ for $userName")
     }
 }
+
+annotation class UserName

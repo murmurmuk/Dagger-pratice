@@ -7,18 +7,23 @@ import javax.inject.Named
 
 class MainActivity : AppCompatActivity() {
     @Inject
-    @field:Named("hot")
-    lateinit var coffee1: Coffee
+    @field:Named("ice-combo")
+    lateinit var combo: Combo
 
     @Inject
-    @field:Named("ice")
-    lateinit var coffee2: Coffee
+    @field:Named("hot-combo")
+    lateinit var combo2: Combo
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        DaggerCoffeeShop.create().order(this)
-        coffee1.show()
-        coffee2.show()
+        DaggerCoffeeShop
+                .builder()
+                .userName("kanna")
+                .build()
+                .order(this)
+        combo.show()
+        combo2.show()
     }
 }
