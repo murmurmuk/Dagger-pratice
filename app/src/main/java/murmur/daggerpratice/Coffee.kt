@@ -4,18 +4,16 @@ import android.util.Log
 import dagger.Module
 import dagger.Provides
 
-@Module(subcomponents = [CakeCabinet::class])
+@Module
 class CoffeeModule{
     @Provides
-    fun provideCoffee(@UserName userName: String): Coffee{
-        return Coffee(userName)
+    fun provideCoffee(): Coffee{
+        return Coffee()
     }
 }
 
-class Coffee (private val userName: String) {
+class Coffee {
     fun show() {
-        Log.d("kanna", "$userName's ~coffee~")
+        Log.d("kanna", "~coffee~")
     }
 }
-
-annotation class UserName

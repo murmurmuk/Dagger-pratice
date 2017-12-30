@@ -1,17 +1,10 @@
 package murmur.daggerpratice
 
-import dagger.BindsInstance
-import dagger.Component
+import dagger.Subcomponent
+import dagger.android.AndroidInjector
 
-@Component(modules = [CoffeeModule::class])
-interface CoffeeShop {
-    fun getCabinet(): CakeCabinet.Builder
-
-    @Component.Builder
-    interface Builder {
-        @BindsInstance
-        fun userName(@UserName userName: String): Builder
-
-        fun build(): CoffeeShop
-    }
+@Subcomponent(modules = [CoffeeModule::class])
+interface CoffeeShop : AndroidInjector<MainActivity> {
+    @Subcomponent.Builder
+    abstract class Builder: AndroidInjector.Builder<MainActivity>()
 }
