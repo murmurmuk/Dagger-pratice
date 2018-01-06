@@ -1,6 +1,5 @@
 package murmur.daggerpratice
 
-import android.util.Log
 import dagger.Module
 import dagger.Provides
 
@@ -8,12 +7,8 @@ import dagger.Provides
 class CoffeeModule{
     @Provides
     fun provideCoffee(): Coffee{
-        return Coffee()
+        return Coffee("coffee")
     }
 }
 
-class Coffee {
-    fun show() {
-        Log.d("kanna", "~coffee~")
-    }
-}
+data class Coffee(val name: String)
