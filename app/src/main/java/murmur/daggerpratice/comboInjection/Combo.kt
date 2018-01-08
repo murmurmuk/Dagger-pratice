@@ -3,11 +3,13 @@ package murmur.daggerpratice.comboInjection
 import android.util.Log
 import murmur.daggerpratice.Cake
 import murmur.daggerpratice.Coffee
+import murmur.daggerpratice.genericInjector.GenericInjection
+import murmur.daggerpratice.genericInjector.HasInjector
 import javax.inject.Inject
 
-class Combo(hasComboInjector: HasComboInjector) {
+class Combo(hasComboInjector: HasInjector<Combo>) {
     init {
-        ComboInjection.inject(this, hasComboInjector)
+        GenericInjection.inject(this, hasComboInjector, Combo::class.java.name)
     }
     @Inject
     lateinit var coffee: Coffee

@@ -6,18 +6,18 @@ import android.util.Log
 import dagger.android.AndroidInjection
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
+import murmur.daggerpratice.genericInjector.HasInjector
 import murmur.daggerpratice.comboInjection.Combo
-import murmur.daggerpratice.comboInjection.HasComboInjector
 import javax.inject.Inject
 
-class MainActivity : AppCompatActivity(), HasComboInjector {
+class MainActivity : AppCompatActivity(), HasInjector<Combo> {
     @Inject
     lateinit var coffee: Coffee
 
     @Inject
     lateinit var dispatchingComboInjector: DispatchingAndroidInjector<Combo>
 
-    override fun comboInjector(): AndroidInjector<Combo> {
+    override fun getInjector(): AndroidInjector<Combo> {
         return dispatchingComboInjector
     }
 
