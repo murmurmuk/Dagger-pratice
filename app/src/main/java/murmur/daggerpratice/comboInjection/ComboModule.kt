@@ -15,7 +15,7 @@ abstract class ComboModule {
     @Binds
     @IntoMap
     @ComboKey(Combo::class)
-    abstract fun bindMainActivityInjectFactory(builder: CakeCabinet.Builder)
+    abstract fun bindCombonjectFactory(builder: CakeCabinet.Builder)
             : AndroidInjector.Factory<out Combo>
 }
 

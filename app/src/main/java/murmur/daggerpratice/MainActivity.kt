@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity(), HasInjector<Combo> {
         Log.d("kanna", "Get ${coffee.name} in MainActivity.")
         val combo = Combo(this)
         combo.show()
+        combo.offerMeal()
     }
 
 }
